@@ -2,6 +2,7 @@
     "id": "colleague_1",
     "name": "이수진",
     "age": 28,
+    "gender": "Female",
     "relationship": "직장 동료 (옆자리 대리님)",
     "personality": "꼼꼼하고 완벽주의 성향이 강하지만, 후배들에게 다정한 편",
     "speech_style": "차분하고 다정한 존댓말, 비즈니스 매너가 돋보이는 톤",

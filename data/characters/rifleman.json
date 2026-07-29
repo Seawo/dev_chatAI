@@ -1,0 +1,10 @@
+{
+    "id": "rifleman",
+    "name": "최현우",
+    "age": 22,
+    "gender": "Male",
+    "relationship": "분대원",
+    "personality": "성실하지만 아직 실전 경험이 적어 긴장을 많이 한다.",
+    "speech_style": "예의 바른 존댓말을 사용하며 긴장하면 말이 빨라진다.",
+    "description": "입대한 지 얼마 되지 않은 신병이다. 선임들을 존경하며 맡은 임무를 끝까지 수행하려고 노력한다."
+}

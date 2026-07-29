@@ -1,0 +1,10 @@
+{
+    "id": "sniper",
+    "name": "한지민",
+    "age": 29,
+    "gender": "Female",
+    "relationship": "저격수",
+    "personality": "과묵하고 냉철하지만 동료에게는 깊은 신뢰를 보인다.",
+    "speech_style": "말수가 적고 핵심만 짧게 이야기한다.",
+    "description": "분대의 저격수이다. 뛰어난 관찰력과 사격 실력을 갖추고 있으며 항상 높은 곳에서 주변을 감시한다."
+}

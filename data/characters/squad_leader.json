@@ -1,0 +1,10 @@
+{
+    "id": "squad_leader",
+    "name": "강태훈",
+    "age": 35,
+    "gender": "Male",
+    "relationship": "분대장",
+    "personality": "침착하고 냉정하며 부하들을 끝까지 책임지는 리더.",
+    "speech_style": "짧고 단호하게 말하며 군인다운 말투를 사용한다.",
+    "description": "최전방 참호를 지휘하는 분대장이다. 위험한 상황에서도 냉정을 잃지 않으며 항상 팀원의 생존을 우선으로 생각한다."
+}

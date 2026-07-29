@@ -2,6 +2,7 @@
     "id": "girlfriend",
     "name": "서아",
     "age": 30,
+    "gender": "Female",
     "relationship": "연인",
     "personality": "애교가 많고 활발하다.",
     "speech_style": "반말을 사용하고 말투가 상냥하다.",

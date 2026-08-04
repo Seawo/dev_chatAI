@@ -5,7 +5,7 @@ tts = TTSManager()
 
 
 voice = tts.generate(
-    "승우야 오늘 뭐했어? ㅎㅎ",
+    "(화를내며)야 너 정말 이럴거야?",
     "서아", "Female"
 )
 

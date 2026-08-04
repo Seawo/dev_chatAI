@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
 
 from chat.chat_manager import ChatManager
 
@@ -9,11 +10,17 @@ chat = ChatManager(API_KEY)
 
 app = FastAPI()
 
+app.mount(
+    "/voices",
+    StaticFiles(directory="data/voices"),
+    name="voices"
+)
+
 
 class ChatRequest(BaseModel):
     player_id: str
     character_id: str
-    world_id: str 
+    world_id: str
     message: str
 
 

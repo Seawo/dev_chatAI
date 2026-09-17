@@ -85,3 +85,59 @@ NVIDIA Build API를 활용하여 몰입감 있는 AI NPC 경험을 제공하는 
 
 ⚡ **FastAPI REST 서버**
 - 가볍고 확장 가능한 AI 서버 구조
+
+
+==============================================================================================
+
+Dev_Chat/
+│
+├─ character/
+│   └─ character_manager.py
+│      └─ NPC 설정 조회
+├─ chat/
+│   └─ chat_manager.py
+│      └─ 전체 대화 흐름 제어=
+├─ conversation/
+│   └─ conversation_manager.py
+│      └─ 이전 대화 Context 관리
+├─ memory/
+│   └─ memory_manager.py
+│      └─ 장기 Memory 관리
+├─ world/
+│   └─ world_manager.py
+│      └─ 현재 World 정보 관리
+├─ prompt/
+│   └─ prompt_builder.py
+│      └─ Context 데이터를 이용한 Prompt 생성
+├─ llm/
+│   └─ nvidia_client.py
+│      └─ NVIDIA API 통신
+├─ tts/
+│   └─ tts_manager.py
+│      └─ Text → Voice 변환
+├─ models/
+│   ├─ character.py
+│   │  └─ Character Data Model
+│   │
+│   └─ world.py
+│      └─ World Data Model
+├─ data/
+│   ├─ characters/
+│   │   ├─ character_a.json
+│   │   ├─ character_b.json
+│   │   └─ ...
+│   ├─ world/
+│   │   ├─ scene_a.json
+│   │   ├─ scene_b.json
+│   │   └─ ...
+│   ├─ conversations/
+│   ├─ memories/
+│   └─ voices/
+├─ server.py
+├─ main.py
+└─ README.md
+
+
+
+==============================================================================================
+

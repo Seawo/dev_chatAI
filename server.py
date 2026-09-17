@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 
 from chat.chat_manager import ChatManager
 
-API_KEY = "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"
+API_KEY = "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"
 
 chat = ChatManager(API_KEY)
 

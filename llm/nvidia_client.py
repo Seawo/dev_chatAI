@@ -13,11 +13,14 @@ class NvidiaClient:
     def chat(self, messages):
 
         completion = self.client.chat.completions.create(
-            model="meta/llama-3.3-70b-instruct",
+            model="nvidia/nemotron-3.5-lightning-30b-a3b",
             messages=messages,
-            temperature=0.7,
+            temperature=0.2,
             top_p=0.9,
-            max_tokens=1024,
+            max_tokens=256,
+            extra_body={
+                "chat_template_kwargs": {"enable_thinking": False}
+            }
         )
 
         return completion.choices[0].message.content

@@ -20,70 +20,123 @@ class ChatManager:
 
     def chat(self, player_id, character_id, world_id, message):
 
-        # 캐릭터 가져오기
+    # ---------------------------------------------------------
+    # 1. 캐릭터 확인
+    # ---------------------------------------------------------
         character = self.character_manager.get_character(character_id)
 
         if character is None:
+            raise ValueError(
+                f"Character '{character_id}' 를 찾을 수 없습니다."
+            )
 
-            raise ValueError(f"Character '{character_id}' 를 찾을 수 없습니다.")
-
+        # ---------------------------------------------------------
+        # 2. World 확인
+        # ---------------------------------------------------------
         world = self.world_manager.get_world(world_id)
 
         if world is None:
-            raise ValueError(f"World '{world_id}' 를 찾을 수 없습니다.")
+            raise ValueError(
+                f"World '{world_id}' 를 찾을 수 없습니다."
+            )
 
-        # 유저 메세지 저장
+        # ---------------------------------------------------------
+        # 3. 사용자 메시지 확인
+        # ---------------------------------------------------------
+        if message is None or not message.strip():
+            raise ValueError(
+                "사용자 메시지가 비어있습니다."
+            )
+
+        # ---------------------------------------------------------
+        # 4. 사용자 메시지 저장
+        # ---------------------------------------------------------
         self.conversation_manager.add_user_message(
             player_id,
             character_id,
             message
         )
 
-        # 현재 대화 가져오기
+        # ---------------------------------------------------------
+        # 5. 현재 Conversation 가져오기
+        # ---------------------------------------------------------
         conversation = self.conversation_manager.get_messages(
             player_id,
             character_id
         )
-        
-        # Memory 가져오기
+
+        # ---------------------------------------------------------
+        # 6. Memory 가져오기
+        # ---------------------------------------------------------
         memories = self.memory_manager.load_memory(
             player_id,
             character_id
         )
 
-        # Prompt 생성
+        # ---------------------------------------------------------
+        # 7. Prompt 생성
+        # ---------------------------------------------------------
         messages = self.prompt_builder.build(
-
             character,
             world,
             memories,
             conversation
         )
 
-        # AI 호출
+        # ---------------------------------------------------------
+        # 8. LLM 호출
+        # ---------------------------------------------------------
         answer = self.llm.chat(
-
             messages
-
         )
 
-        # AI 답변 저장
+        # ---------------------------------------------------------
+        # 9. LLM 응답 검증
+        # ---------------------------------------------------------
+        if answer is None:
+            raise RuntimeError(
+                "LLM 응답이 None입니다."
+            )
+
+        if not isinstance(answer, str):
+            raise RuntimeError(
+                f"LLM 응답 타입이 올바르지 않습니다: "
+                f"{type(answer).__name__}"
+            )
+
+        answer = answer.strip()
+
+        if not answer:
+            raise RuntimeError(
+                "LLM 응답이 비어있습니다."
+            )
+
+        print()
+        print("[ChatManager] ===== LLM Answer =====")
+        print(answer)
+        print("[ChatManager] ======================")
+
+        # ---------------------------------------------------------
+        # 10. AI 답변 저장
+        # ---------------------------------------------------------
         self.conversation_manager.add_assistant_message(
             player_id,
             character_id,
             answer
         )
 
-
-        # TTS 생성
+        # ---------------------------------------------------------
+        # 11. TTS 생성
+        # ---------------------------------------------------------
         voice_file = self.tts.generate(
             answer,
             character.name,
             character.gender
         )
 
-
-        # 반환
+        # ---------------------------------------------------------
+        # 12. 반환
+        # ---------------------------------------------------------
         return {
             "answer": answer,
             "voice": voice_file
